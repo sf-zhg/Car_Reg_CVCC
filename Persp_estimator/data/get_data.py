@@ -2,6 +2,7 @@ from Persp_estimator.data.car_persp import CarPerspective
 from Persp_estimator.data.get_transform import get_transform
 from typing import Optional, Callable, Tuple, Any
 
+
 def get_data(
     dataset: str,
     split_ratio: float,
@@ -38,7 +39,7 @@ def get_data(
         train_data = CarPerspective(
             root=root,
             split='train',
-            split_ratio=split_ratio,  
+            split_ratio=split_ratio,
             transform=train_transform
         )
 
