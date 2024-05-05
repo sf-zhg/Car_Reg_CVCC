@@ -1,8 +1,6 @@
 from Persp_estimator.data.car_persp import CarPerspective
 from Persp_estimator.data.get_transform import get_transform
-
 from typing import Optional, Callable, Tuple, Any
-
 
 def get_data(
     dataset: str,
@@ -17,43 +15,41 @@ def get_data(
     Parameters
     ----------
     dataset : str
-        name of dataset.
-    split : float
-        test or train set.
-    tranform : Optional[Callable], optional
-        image transformation. The default is None.
-    target_transform : Optional[Callable], optional
-        target transformation. The default is None.
+        Name of dataset.
     split_ratio : float
-        ratio of train set from whole set.
+        Ratio of train set from the whole dataset.
     root : str
-        directory of data. should be Persp_estimator/raw_data
+        Directory of data, typically should be Persp_estimator/raw_data.
+    transform : Optional[Callable], optional
+        Image transformation function. Default is None.
+    target_transform : Optional[Callable], optional
+        Target transformation function. Default is None.
 
     Returns
     -------
-    tuple of train and test set.
-
+    tuple
+        A tuple containing the training set and the test set.
     """
-    # define transformation functions
+    # Define transformation functions
     train_transform = get_transform(dataset=dataset, split='train')
     test_transform = get_transform(dataset=dataset, split='test')
 
     if dataset == 'car_persp':
-        # define train and test args (as supervised we dont need memory args)
-        # usually the args can be outside the case but when handling a lot
-        # of datasets it seems smart to not write every dataset calss by hand
-        # which leads to different args and specification
-        
-        train_data = CarPerspective(root=root,
-                                    split='train',
-                                    plit_ratio=0.5,
-                                    transform=train_transform)
-        
-        test_data = CarPerspective(root=root,
-                                    split='test',
-                                    plit_ratio=0.5,
-                                    transform=test_transform)
+        # Define train and test data with correct split ratio
+        train_data = CarPerspective(
+            root=root,
+            split='train',
+            split_ratio=split_ratio,  # Corrected typo
+            transform=train_transform
+        )
+
+        test_data = CarPerspective(
+            root=root,
+            split='test',
+            split_ratio=split_ratio,  # Corrected typo
+            transform=test_transform
+        )
 
         return train_data, test_data
     else:
-        raise AttributeError('dataset not defined choose a different one')
+        raise AttributeError("Dataset not defined. Please choose a different one.")
