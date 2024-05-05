@@ -5,25 +5,25 @@ from typing import Callable
 
 def get_transform(dataset: str, split: str) -> Callable:
     """
-    function to get data augmentation for images. for simplicity sake, i do not
-    define more than two input args but to be precise, we would have to define
-    transformation modules as args as well as the transformation params.
+    Get data augmentation for images.
+
+    This function returns a callable transformation based on the specified
+    dataset and whether the transformation is for training or testing.
 
     Parameters
     ----------
     dataset : str
-        dataset name as defined in the code.
+        The name of the dataset.
     split : str
-        train or test.
+        'train' or 'test'.
 
     Returns
     -------
     Callable
-        transformation functions.
-
+        A callable transformation function.
     """
 
-    if dataset == "car_persp":
+    if dataset == 'car_persp':
         resize = (256, 256)
         # lets just assume imagenet normalizations as it should fit the
         # dataset quite well. otherwise we would need to write a summary script
@@ -31,9 +31,9 @@ def get_transform(dataset: str, split: str) -> Callable:
         mean = [0.485, 0.456, 0.406]
         std = [0.229, 0.224, 0.225]
     else:
-        raise AttributeError(f"dataset not defined choose a different one.")
+        raise AttributeError('dataset not defined choose a different one.')
 
-    if split == "train":
+    if split == 'train':
         # define training transformations
         transform = t.Compose(
             [
@@ -45,12 +45,12 @@ def get_transform(dataset: str, split: str) -> Callable:
                 t.Normalize(mean=mean, std=std),
             ]
         )
-    elif split == "test":
+    elif split == 'test':
         # define test transform
         transform = t.Compose(
             [t.Resize(size=resize), t.ToTensor(), t.Normalize(mean=mean, std=std)]
         )
     else:
-        raise AttributeError(f"split not defined, take test or train")
+        raise AttributeError(f'split not defined, take test or train')
 
     return transform

@@ -14,7 +14,7 @@ def trainer(
     model: Module,
 ) -> Tuple[float, float, float]:
     """
-    trainer over one epoch
+    Trainer over one epoch.
 
     Parameters
     ----------
@@ -31,7 +31,6 @@ def trainer(
     -------
     tuple of floats
         average loss over one epoch- total and single losses for each score.
-
     """
 
     device = "cuda" if torch.cuda.is_available() else "cpu"

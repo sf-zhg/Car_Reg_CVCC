@@ -12,7 +12,7 @@ def get_data(
     target_transform: Optional[Callable] = None,
 ) -> Tuple[Any, Any]:
     """
-    function to get dataset
+    Function to get dataset.
 
     Parameters
     ----------
@@ -35,26 +35,26 @@ def get_data(
 
     """
     # define transformation functions
-    train_transform = get_transform(dataset=dataset, split="train")
-    test_transform = get_transform(dataset=dataset, split="test")
+    train_transform = get_transform(dataset=dataset, split='train')
+    test_transform = get_transform(dataset=dataset, split='test')
 
-    if dataset == "car_persp":
+    if dataset == 'car_persp':
         # define train and test args (as supervised we dont need memory args)
         # usually the args can be outside the case but when handling a lot
         # of datasets it seems smart to not write every dataset calss by hand
         # which leads to different args and specification
         train_args = {
-            "root": root,
-            "split": "train",
-            "split_ratio": split_ratio,
-            "transform": train_transform,
+            'root': root,
+            'split': 'train',
+            'split_ratio': split_ratio,
+            'transform': train_transform,
         }
         test_args = {
-            "root": root,
-            "split": "test",
-            "split_ratio": split_ratio,
-            "transform": test_transform,
+            'root': root,
+            'split': 'test',
+            'split_ratio': split_ratio,
+            'transform': test_transform,
         }
         return CarPerspective(**train_args), CarPerspective(**test_args)
     else:
-        raise AttributeError(f"dataset not defined choose a different one")
+        raise AttributeError('dataset not defined choose a different one')

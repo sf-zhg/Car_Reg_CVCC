@@ -10,7 +10,7 @@ def inference(
     data_loader: DataLoader, model: Module, loss: Callable
 ) -> Tuple[float, float, float]:
     """
-
+    Function to run inference with.
 
     Parameters
     ----------
