@@ -59,4 +59,14 @@ class Resnet18(nn.Module):
             nn.Dropout(self.drop_out_rate)
         )
 
-    def forward(self, x: torch.Tensor) -> Tuple[tor
+    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        '''
+        Forward pass for resnet18.
+        '''
+        x = self.f(x)  # Base encoder
+        features = torch.flatten(x, start_dim=1)  # Flatten the feature map
+        x = self.drop_out_layer(features)  # Apply dropout
+        h = self.head1(x)  # First target prediction
+        g = self.head2(x)  # Second target prediction
+
+        return h, g
