@@ -22,10 +22,12 @@ Note that ```source activate``` does not work on WindowsOS and has to be substit
 
 Then install the Persp_estimator with:
 ```pip install -r requirements.txt
-!python setup.py install ```
+```python setup.py install```
 
 # 3. Run Experiments via:
-```python run_experiment/run_experiment.py```
+```
+python run_experiment/run_experiment.py
+```
 
 make sure to set the working directory appropriately!
 
