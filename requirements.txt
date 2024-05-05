@@ -1,0 +1,10 @@
+#-e .
+pandas
+torch
+torchvision
+numpy
+tqdm 
+tensorboardX
+pytest
+matplotlib
+numpy
