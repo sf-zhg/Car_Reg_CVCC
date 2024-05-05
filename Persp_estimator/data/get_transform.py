@@ -51,6 +51,6 @@ def get_transform(dataset: str, split: str) -> Callable:
             [t.Resize(size=resize), t.ToTensor(), t.Normalize(mean=mean, std=std)]
         )
     else:
-        raise AttributeError(f'split not defined, take test or train')
+        raise AttributeError('split not defined, take test or train')
 
     return transform
