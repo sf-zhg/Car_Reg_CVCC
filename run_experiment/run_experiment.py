@@ -1,3 +1,10 @@
+"""
+This script performs a regression model experiment with data loading, model setup, training, and inference.
+
+The script initializes the dataset, splits it into training and testing sets, sets up the model, and defines the optimizer and loss function.
+It then trains the model over a specified number of epochs, running inference at defined intervals, and saves the results in CSV files.
+"""
+
 import argparse
 import os
 import time
