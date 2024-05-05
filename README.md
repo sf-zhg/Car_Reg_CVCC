@@ -25,7 +25,7 @@ Then install the Persp_estimator with:
 !python setup.py install ```
 
 # 3. Run Experiments via:
-```python run_experiment/run_experiment.py ```
+```python run_experiment/run_experiment.py```
 
 make sure to set the working directory appropriately!
 
