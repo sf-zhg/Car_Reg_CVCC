@@ -6,7 +6,7 @@ git clone https://github.com/sf-zhg/Car_Reg_CVCC.git
 cd Car_Reg_CVCC
 ```
 # 2. Create a virtual environment:
-create a virtual environment for to run this repository on and install dependencies. 
+create a virtual environment to run this repository on and install dependencies. 
 ```
 python -m venv working_environment
 source working_environment/bin/activate
