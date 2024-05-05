@@ -35,18 +35,17 @@ def get_data(
     test_transform = get_transform(dataset=dataset, split='test')
 
     if dataset == 'car_persp':
-        # Define train and test data with correct split ratio
         train_data = CarPerspective(
             root=root,
             split='train',
-            split_ratio=split_ratio,  # Corrected typo
+            split_ratio=split_ratio,  
             transform=train_transform
         )
 
         test_data = CarPerspective(
             root=root,
             split='test',
-            split_ratio=split_ratio,  # Corrected typo
+            split_ratio=split_ratio,
             transform=test_transform
         )
 
